@@ -6,27 +6,14 @@
     align-items: center;
     gap: 30px;
 
-    .sort {
-      display: flex;
-      justify-content: center;
-      flex-wrap: nowrap;
-      gap: 10px;
-      button {
-        padding: 10px 30px;
-        border-radius: 5px;
-        font-size: 20px;
-        // background: #ff0037;
-        background: #080077;
-
-        color: #ffffff;
-        border: none;
-      }
-    }
+     
     .block {
       display: flex;
-      justify-content: center;
+      justify-content: start;
+      align-items: start;
       flex-wrap: wrap;
       gap: 10px;
+      width: 100%;
       .box {
         padding: 5px;
         display: flex;
@@ -34,27 +21,29 @@
         align-items: start;
         justify-content: space-between;
         width: 240px;
-        height: 340px;
+        height: 100%;
         border: solid 2px #dfdfdf;
         border-radius: 5px;
         background: #ffffff;
+        cursor: pointer;
         img {
           width: 100%;
         }
         h1 {
-          font-size: 28px;
+          font-size: 22px;
         }
         .price {
           width: 100%;
           display: flex;
           align-items: center;
           justify-content: space-between;
+          margin-top: 6px;
 
           h2 {
-            font-size: 20px;
+            font-size: 18px;
           }
           p {
-            font-size: 16px;
+            font-size: 14px;
             color: #5b5eff;
           }
         }
@@ -62,22 +51,25 @@
           width: 100%;
           display: flex;
           justify-content: space-between;
+          margin-top: 20px;
 
           button {
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 5px;
-            width: 170px;
-            height: 40px;
+            width: 185px;
+            height: 35px;
             border: none;
             background: #080077;
             color: #ffffff;
             font-size: 18px;
+            cursor: pointer;
           }
           .favorite {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
           }
         }
       }
