@@ -1,0 +1,14 @@
+#Footer {
+	background: black;
+	.content {
+		width: 100%;
+		padding: 20px 0;
+		display: flex;
+		justify-content: space-between;
+
+    p{
+      color: #ffffff;
+      font-size: 14px;
+    }
+	}
+}

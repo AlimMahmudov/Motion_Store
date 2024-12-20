@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { UseData } from "../../../data/data";
 import { MdFavoriteBorder } from "react-icons/md";
 import scss from "./Hits.module.scss";
+import { GrNext, GrPrevious } from "react-icons/gr";
 
 const Hits = () => {
   const { data } = UseData();
@@ -52,7 +53,7 @@ const Hits = () => {
             <h1>Хиты продаж в этой категории</h1>
           </div>
           <div className={scss.scroll}>
-            <button onClick={() => scrollSlider("prev")}>Prev</button>
+            <button onClick={() => scrollSlider("prev")}><GrPrevious /></button>
             <div ref={sliderRef} className={scss.slider}>
               {extendedData.map((el, index) => (
                 <div
@@ -75,7 +76,7 @@ const Hits = () => {
                 </div>
               ))}
             </div>
-            <button onClick={() => scrollSlider("next")}>Next</button>
+            <button onClick={() => scrollSlider("next")}><GrNext /></button>
           </div>
         </div>
       </div>

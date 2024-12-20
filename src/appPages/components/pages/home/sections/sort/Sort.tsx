@@ -1,23 +1,18 @@
 "use client";
-import { useFilterStore } from "@/appPages/stores/searchStore";
+import { useFilterStore } from "@/appPages/stores/sortStore";
 import scss from "./Sort.module.scss";
 
 const Sort = () => {
-	const {
-		selectedType,  
-		setSelectedType,
-		resetFilters,
-	} = useFilterStore();
+	const { selectedType, setSelectedType, resetFilters } = useFilterStore();
 
 	const handleTypeClick = (type: string) => {
 		setSelectedType(selectedType === type ? "" : type);
 	};
- 
 
 	const getButtonStyle = (isSelected: boolean) => ({
-		backgroundColor: isSelected ? "#080077" : "white",  
-		color: isSelected ? "white" : "black",  
-    border: "solid 2px #dfdfdf",
+		backgroundColor: isSelected ? "#080077" : "white",
+		color: isSelected ? "white" : "black",
+		border: "solid 2px #dfdfdf",
 
 		padding: "10px 40px",
 		margin: "5px",
@@ -33,7 +28,9 @@ const Sort = () => {
 					{/* Type Buttons */}
 					<div className={scss.btn}>
 						<div className="filter-description">
-							<button onClick={resetFilters}  style={getButtonStyle(selectedType === "")}>
+							<button
+								onClick={resetFilters}
+								style={getButtonStyle(selectedType === "")}>
 								Все ноутбуки
 							</button>
 						</div>

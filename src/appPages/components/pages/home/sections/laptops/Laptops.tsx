@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import scss from "./Laptops.module.scss";
 import { MdFavoriteBorder } from "react-icons/md";
 import { UseData } from "../../../data/data";
-import { useFilterStore } from "@/appPages/stores/searchStore";
+import { useFilterStore } from "@/appPages/stores/sortStore";
 
 const Laptops = () => {
 	const router = useRouter();
@@ -45,8 +45,6 @@ const Laptops = () => {
 						))}
 					</div>
 				</div>
-
-				 
 			</div>
 		</div>
 	);

@@ -37,6 +37,7 @@ const Contact = () => {
   return (
     <div id={scss.Contact}>
       <div className="container">
+        <div className={scss.content}>
         <div className={scss.contact}>
           <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={scss.inputs}>
@@ -59,9 +60,7 @@ const Contact = () => {
             </div>
             <div className={scss.buttons}>
               <button type="submit">Оставьте заявку</button>
-              <button className={scss.mini} type="submit">
-                -+
-              </button>
+               
             </div>
           </form>
           <div className={scss.map}>
@@ -78,6 +77,7 @@ const Contact = () => {
               loading="lazy"
             ></iframe>
           </div>
+        </div>
         </div>
       </div>
     </div>
