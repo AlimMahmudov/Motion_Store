@@ -1,0 +1,105 @@
+#Contact {
+  padding: 50px;
+  background: #080077;
+
+  .contact {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 500px;
+      gap: 10px;
+      .inputs {
+        padding: 30px 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        border-radius: 20px;
+        background: #858585;
+        border: solid 2px #ffffff;
+
+        h1 {
+          font-size: 26px;
+          color: #ffffff;
+        }
+        input {
+          width: 80%;
+          height: 50px;
+          border-radius: 5px;
+          outline: none;
+          padding: 10px;
+          font-size: 18px;
+          border: none;
+        }
+        textarea {
+          width: 80%;
+          height: 100px;
+          border-radius: 5px;
+          outline: none;
+          padding: 10px;
+          font-size: 18px;
+          border: none;
+        }
+      }
+      .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 20px;
+        gap: 10px;
+
+        button {
+          width: 90%;
+          height: 50px;
+          border-radius: 20px;
+          border: none;
+          color: #ffffff;
+          background: #858585;
+          border: solid 2px #ffffff;
+          font-size: 18px;
+        }
+        .mini {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          color: #ffffff;
+          border: solid 2px #ffffff;
+        }
+      }
+    }
+    .map {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .map_text {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        h1 {
+          font-size: 36px;
+          color: #ffffff;
+        }
+        h2 {
+          font-size: 18px;
+          width: 480px;
+          color: #ffffff;
+        }
+        p {
+          font-size: 18px;
+          color: #ffffff;
+        }
+      }
+      iframe {
+        width: 100%;
+        height: 250px;
+        border-radius: 20px;
+      }
+    }
+  }
+}

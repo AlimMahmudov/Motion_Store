@@ -1,13 +1,7 @@
-import scss from "./Home.module.scss";
+import React from "react";
 
 const Home = () => {
-  return (
-    <div id={scss.Home}>
-      <div className="container">
-        <div className={scss.home}>Home</div>
-      </div>
-    </div>
-  );
+  return <div>Home</div>;
 };
 
 export default Home;
