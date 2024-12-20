@@ -1,4 +1,58 @@
 #Details {
+  padding-top: 100px;
+  padding: 50px;
   .details {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    // gap: 50px;
+
+    img {
+      width: 350px;
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      h1 {
+        font-size: 36px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+      .haracter {
+        display: flex;
+        gap: 50px;
+      }
+      .price {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 20px;
+        .buttons {
+          display: flex;
+          justify-content: space-between;
+          button {
+            width: 85%;
+            height: 40px;
+            background: #080077;
+            color: #ffffff;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+          }
+          .favorite {
+            width: 40px;
+            height: 40px;
+            background: #080077;
+            color: #ffffff;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
   }
 }
