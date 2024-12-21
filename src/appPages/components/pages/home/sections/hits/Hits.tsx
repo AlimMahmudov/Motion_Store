@@ -5,6 +5,7 @@ import { UseData } from "../../../data/data";
 import { MdFavoriteBorder } from "react-icons/md";
 import scss from "./Hits.module.scss";
 import { GrNext, GrPrevious } from "react-icons/gr";
+import Image from "next/image";
 
 const Hits = () => {
   const { data } = UseData();
@@ -53,7 +54,9 @@ const Hits = () => {
             <h1>Хиты продаж в этой категории</h1>
           </div>
           <div className={scss.scroll}>
-            <button onClick={() => scrollSlider("prev")}><GrPrevious /></button>
+            <button onClick={() => scrollSlider("prev")}>
+              <GrPrevious />
+            </button>
             <div ref={sliderRef} className={scss.slider}>
               {extendedData.map((el, index) => (
                 <div
@@ -61,7 +64,12 @@ const Hits = () => {
                   key={index}
                   className={scss.box}
                 >
-                  <img src={el.image} alt="" />
+                  <Image
+                    src={el.image}
+                    alt={el.model}
+                    width={220} // Указываем ширину
+                    height={250} // Указываем высоту
+                  />
                   <h1>{el.model}</h1>
                   <div className={scss.price}>
                     <h2>{el.price} сом</h2>
@@ -76,7 +84,9 @@ const Hits = () => {
                 </div>
               ))}
             </div>
-            <button onClick={() => scrollSlider("next")}><GrNext /></button>
+            <button onClick={() => scrollSlider("next")}>
+              <GrNext />
+            </button>
           </div>
         </div>
       </div>

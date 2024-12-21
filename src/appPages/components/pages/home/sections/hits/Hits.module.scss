@@ -33,6 +33,11 @@
           border: solid 2px #dfdfdf;
           border-radius: 5px;
           background: #ffffff;
+          transition: all 0.3s;
+          &:hover {
+            transform: scale(1.05);
+            transition: all 0.3s;
+          }
           img {
             width: 100%;
           }
@@ -70,6 +75,11 @@
               background: #080077;
               color: #ffffff;
               font-size: 18px;
+              transition: all 0.3s;
+              &:hover {
+                background: #0b00aa;
+                transition: all 0.3s;
+              }
             }
             .favorite {
               width: 40px;

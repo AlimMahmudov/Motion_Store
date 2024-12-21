@@ -2,6 +2,8 @@
 import { useParams } from "next/navigation";
 import { UseData } from "../../../data/data";
 import scss from "./Details.module.scss";
+import Image from "next/image";
+import { MdFavoriteBorder } from "react-icons/md";
 
 const Details = () => {
   const { data } = UseData();
@@ -13,7 +15,15 @@ const Details = () => {
     <div id={scss.Details}>
       <div className="container">
         <div className={scss.details}>
-          <img src={findProduct?.image} alt="" />
+          {findProduct?.image && (
+            <Image
+              src={findProduct.image}
+              alt={findProduct.model}
+              width={320} // Указываем ширину
+              height={300} // Указываем высоту
+              style={{ objectFit: "cover" }} // Настраиваем отображение изображения
+            />
+          )}
           <div className={scss.text}>
             <h1>{findProduct?.model}</h1>
             <p>{findProduct?.Description}</p>
@@ -39,7 +49,9 @@ const Details = () => {
               <h2>{findProduct?.price} сом</h2>
               <div className={scss.buttons}>
                 <button>Купить</button>
-                <button className={scss.favorite}>O</button>
+                <button className={scss.favorite}>
+                  <MdFavoriteBorder />
+                </button>
               </div>
             </div>
           </div>
