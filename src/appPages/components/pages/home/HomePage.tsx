@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div>
       <Home />
-      <Sort/>
+      <Sort />
       <Laptops />
       <Hits />
       <Contact />

@@ -104,3 +104,437 @@
     }
   }
 }
+
+@media (max-width: 1100px) {
+  #Hits {
+    padding: 50px;
+    .hits {
+      display: flex;
+      flex-direction: column;
+      .text {
+        padding: 0px 70px;
+      }
+      .scroll {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        .slider {
+          display: flex;
+          overflow-x: auto;
+          gap: 20px;
+          padding-bottom: 10px;
+          padding: 30px 0px;
+          max-width: 1100px;
+
+          scrollbar-width: thin; /* Для Firefox */
+          scrollbar-color: #5b5eff00 #dfdfdf; /* Для Firefox */
+
+          .box {
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-between;
+            width: 240px;
+            height: 340px;
+            border: solid 2px #dfdfdf;
+            border-radius: 5px;
+            background: #ffffff;
+            transition: all 0.3s;
+            &:hover {
+              transform: scale(1.05);
+              transition: all 0.3s;
+            }
+            img {
+              width: 100%;
+            }
+            h1 {
+              font-size: 28px;
+            }
+            .price {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              h2 {
+                font-size: 20px;
+              }
+              p {
+                font-size: 16px;
+                color: #5b5eff;
+              }
+            }
+            .buttons {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              gap: 10px;
+
+              button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                width: 170px;
+                height: 40px;
+                border: none;
+                background: #080077;
+                color: #ffffff;
+                font-size: 18px;
+                transition: all 0.3s;
+                &:hover {
+                  background: #0b00aa;
+                  transition: all 0.3s;
+                }
+              }
+              .favorite {
+                width: 40px;
+                height: 40px;
+              }
+            }
+          }
+        }
+      }
+      button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: none;
+        color: black;
+        border: none;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  #Hits {
+    padding: 30px;
+    .hits {
+      display: flex;
+      flex-direction: column;
+      .text {
+        padding: 0px 70px;
+      }
+      .scroll {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        .slider {
+          display: flex;
+          overflow-x: auto;
+          gap: 20px;
+          padding-bottom: 10px;
+          padding: 30px 0px;
+          max-width: 1100px;
+
+          scrollbar-width: thin; /* Для Firefox */
+          scrollbar-color: #5b5eff00 #dfdfdf; /* Для Firefox */
+
+          .box {
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-between;
+            width: 240px;
+            height: 340px;
+            border: solid 2px #dfdfdf;
+            border-radius: 5px;
+            background: #ffffff;
+            transition: all 0.3s;
+            &:hover {
+              transform: scale(1.05);
+              transition: all 0.3s;
+            }
+            img {
+              width: 100%;
+            }
+            h1 {
+              font-size: 28px;
+            }
+            .price {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              h2 {
+                font-size: 20px;
+              }
+              p {
+                font-size: 16px;
+                color: #5b5eff;
+              }
+            }
+            .buttons {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              gap: 10px;
+
+              button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                width: 170px;
+                height: 40px;
+                border: none;
+                background: #080077;
+                color: #ffffff;
+                font-size: 18px;
+                transition: all 0.3s;
+                &:hover {
+                  background: #0b00aa;
+                  transition: all 0.3s;
+                }
+              }
+              .favorite {
+                width: 40px;
+                height: 40px;
+              }
+            }
+          }
+        }
+      }
+      button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: none;
+        color: black;
+        border: none;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  #Hits {
+    padding: 30px;
+    .hits {
+      display: flex;
+      flex-direction: column;
+      .text {
+        padding: 0px 30px;
+
+        h1 {
+          width: 100%;
+          font-size: 26px;
+        }
+      }
+      .scroll {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        .slider {
+          display: flex;
+          overflow-x: auto;
+          gap: 20px;
+          padding-bottom: 10px;
+          padding: 30px 0px;
+          max-width: 1100px;
+
+          scrollbar-width: thin; /* Для Firefox */
+          scrollbar-color: #5b5eff00 #dfdfdf; /* Для Firefox */
+
+          .box {
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-between;
+            width: 240px;
+            height: 340px;
+            border: solid 2px #dfdfdf;
+            border-radius: 5px;
+            background: #ffffff;
+            transition: all 0.3s;
+            &:hover {
+              transform: scale(1.05);
+              transition: all 0.3s;
+            }
+            img {
+              width: 100%;
+            }
+            h1 {
+              font-size: 26px;
+            }
+            .price {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              h2 {
+                font-size: 20px;
+              }
+              p {
+                font-size: 16px;
+                color: #5b5eff;
+              }
+            }
+            .buttons {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              gap: 10px;
+
+              button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                width: 170px;
+                height: 40px;
+                border: none;
+                background: #080077;
+                color: #ffffff;
+                font-size: 18px;
+                transition: all 0.3s;
+                &:hover {
+                  background: #0b00aa;
+                  transition: all 0.3s;
+                }
+              }
+              .favorite {
+                width: 40px;
+                height: 40px;
+              }
+            }
+          }
+        }
+      }
+      button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: none;
+        color: black;
+        border: none;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #Hits {
+    padding: 30px;
+    .hits {
+      display: flex;
+      flex-direction: column;
+      .text {
+        padding: 0px 30px;
+
+        h1 {
+          width: 100%;
+          font-size: 26px;
+        }
+      }
+      .scroll {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        .slider {
+          display: flex;
+          overflow-x: auto;
+          gap: 10px;
+          padding-bottom: 10px;
+          padding: 30px 0px;
+          max-width: 1100px;
+
+          scrollbar-width: thin; /* Для Firefox */
+          scrollbar-color: #5b5eff00 #dfdfdf; /* Для Firefox */
+
+          .box {
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-between;
+            width: 240px;
+            height: 100%;
+            border: solid 2px #dfdfdf;
+            border-radius: 5px;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s;
+            &:hover {
+              transform: scale(1.05);
+              transition: all 0.3s;
+            }
+            img {
+              width: 100%;
+            }
+            h1 {
+              font-size: 20px;
+            }
+            .price {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              h2 {
+                font-size: 14px;
+              }
+              p {
+                font-size: 16px;
+                color: #5b5eff;
+              }
+            }
+            .buttons {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              gap: 10px;
+
+              button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                width: 170px;
+                height: 40px;
+                border: none;
+                background: #080077;
+                color: #ffffff;
+                font-size: 18px;
+                transition: all 0.3s;
+                &:hover {
+                  background: #0b00aa;
+                  transition: all 0.3s;
+                }
+              }
+              .favorite {
+                width: 40px;
+                height: 40px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
