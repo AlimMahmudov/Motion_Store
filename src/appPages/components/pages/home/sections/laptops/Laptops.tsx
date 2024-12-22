@@ -4,7 +4,7 @@ import scss from "./Laptops.module.scss";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
 import Image from "next/image";
-
+import test from "@/shared/images/hero_img.avif"
 const Laptops = () => {
   const router = useRouter();
   const { data } = useGetLaptopsQuery();
@@ -22,7 +22,7 @@ const Laptops = () => {
                 className={scss.box}
               >
                   <Image
-                    src={el.photos}
+                    src={test}
                     alt={el.model}
                     width={220}
                     height={250}
