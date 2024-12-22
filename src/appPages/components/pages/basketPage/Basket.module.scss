@@ -1,0 +1,35 @@
+#Basket {
+  margin-top: 5%;
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .product {
+        padding: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 5px;
+      .count {
+        display: flex;
+        
+        button {
+          width: 30px;
+          height: 30px;
+          font-size: 24px;
+          text-align: center;
+          border: none;
+
+        }
+        .btn1 {
+          background: rgb(119, 189, 119);
+        }
+        .btn2 {
+          background: rgb(255, 66, 66);
+        }
+       
+      }
+    }
+  }
+}

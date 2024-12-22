@@ -2,42 +2,31 @@
 import { useRouter } from "next/navigation";
 import scss from "./Laptops.module.scss";
 import { MdFavoriteBorder } from "react-icons/md";
-import { UseData } from "../../../data/data";
-import { useFilterStore } from "@/appPages/stores/sortStore";
+import { useGetLaptopsQuery } from "@/redux/api/laptops";
 import Image from "next/image";
 
 const Laptops = () => {
   const router = useRouter();
-  const { data } = UseData();
+  const { data } = useGetLaptopsQuery();
+  console.log(data, "heli");
 
-  const { selectedType, selectedCategory } = useFilterStore();
-
-  // Фильтрация данных
-  const filteredData = data.filter((el) => {
-    const matchesType = selectedType ? el.model.includes(selectedType) : true;
-    const matchesCategory = selectedCategory
-      ? el.brand.includes(selectedCategory)
-      : true;
-    return matchesType && matchesCategory;
-  });
   return (
-    <div id={scss.Laptops}>
+    <div className={scss.Laptops}>
       <div className="container">
         <div className={scss.laptops}>
           <div className={scss.block}>
-            {filteredData.map((el, index) => (
+            {data?.map((el) => (
               <div
                 onClick={() => router.push(`/details/${el.id}`)}
-                key={index}
+                key={el.id}
                 className={scss.box}
               >
-                <Image
-                  src={el.image}
-                  alt={el.model}
-                  width={220} // Указываем ширину
-                  height={250} // Указываем высоту
-                />
-
+                  <Image
+                    src={el.photos}
+                    alt={el.model}
+                    width={220}
+                    height={250}
+                  />
                 <h1>{el.model}</h1>
                 <div className={scss.price}>
                   <h2>{el.price} сом</h2>
