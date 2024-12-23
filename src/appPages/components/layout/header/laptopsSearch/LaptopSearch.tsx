@@ -2,16 +2,27 @@
 import { useRouter } from "next/navigation";
 import scss from "./LaptopSearch.module.scss";
 import { MdFavoriteBorder } from "react-icons/md";
-import { UseData } from "@/appPages/components/pages/data/data";
 import { useSearchStore } from "@/appPages/stores/searchStore";
 import { AiOutlineLeft } from "react-icons/ai";
 import Link from "next/link";
 import Image from "next/image";
+import { useGetLaptopsQuery } from "@/redux/api/laptops";
+import test from "@/shared/images/hero_img.avif";
+import { GrCart } from "react-icons/gr";
 
 const LaptopSearch = () => {
   const router = useRouter();
-  const { data } = UseData();
   const { searchQuery } = useSearchStore();
+  const { data, isLoading, isError } = useGetLaptopsQuery();
+
+  // Проверяем состояние загрузки или ошибки
+  if (isLoading) {
+    return <p>Загрузка...</p>;
+  }
+
+  if (isError || !data) {
+    return <p>Ошибка загрузки данных.</p>;
+  }
 
   const filteredData = data.filter((el) =>
     el.brand.toLowerCase().includes(searchQuery.toLowerCase())
@@ -29,19 +40,19 @@ const LaptopSearch = () => {
           <div className={scss.block}>
             {filteredData.length > 0 ? (
               filteredData.map((el, index) => (
-                <div
-                  onClick={() => router.push(`/details/${el.id}`)}
-                  key={index}
-                  className={scss.box}
-                >
-                  <Image width={200} height={220} src={el.image} alt="img" />
+                <div key={el.id} className={scss.box}>
+                  <Image src={test} alt={el.model} width={220} height={250} />
                   <h1>{el.model}</h1>
                   <div className={scss.price}>
                     <h2>{el.price} сом</h2>
-                    <p>На витрине</p>
+                    <button>
+                      <GrCart />
+                    </button>
                   </div>
                   <div className={scss.buttons}>
-                    <button>Купить</button>
+                    <button onClick={() => router.push(`/details/${el.id}`)}>
+                      Подробнее
+                    </button>
                     <button className={scss.favorite}>
                       <MdFavoriteBorder />
                     </button>

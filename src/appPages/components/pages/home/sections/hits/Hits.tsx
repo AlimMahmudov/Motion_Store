@@ -1,97 +1,140 @@
-// "use client";
-// import { useRef, useEffect } from "react";
-// import { useRouter } from "next/navigation";
-// import { UseData } from "../../../data/data";
-// import { MdFavoriteBorder } from "react-icons/md";
-// import scss from "./Hits.module.scss";
-// import { GrNext, GrPrevious } from "react-icons/gr";
-// import Image from "next/image";
+"use client";
+import React, { useRef } from "react";
+import img1 from "@/shared/images/eduhub.png";
+import img2 from "@/shared/images/DnI9rquWsAAgfKx-min.png";
+import img3 from "@/shared/images/hero_img.avif";
+import img4 from "@/shared/images/eduhub.png";
+import img5 from "@/shared/images/eduhub.png";
+import scss from "./Hits.module.scss";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import Image from "next/image";
+import { GrCart } from "react-icons/gr";
 
-// const Hits = () => {
-//   const { data } = UseData();
-//   const router = useRouter();
-//   const sliderRef = useRef<HTMLDivElement>(null);
+const Hits = () => {
+  const sliderRef = useRef<Slider | null>(null);
 
-//   const extendedData = [...data, ...data, ...data];
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
 
-//   const scrollSlider = (direction: "prev" | "next") => {
-//     if (sliderRef.current) {
-//       const scrollAmount = direction === "next" ? 255 : -255;
-//       sliderRef.current.scrollBy({
-//         left: scrollAmount,
-//         behavior: "smooth",
-//       });
-//     }
-//   };
+  const slides = [
+    {
+      url: img1,
+      title: "Заголовок 1",
+      disc: "Описание 1",
+      data: "12.03.2024",
+      price: "50000",
+    },
+    {
+      url: img2,
+      title: "Заголовок 2",
+      disc: "Описание 2",
+      data: "13.03.2024",
+      price: "50000",
+    },
+    {
+      url: img3,
+      title: "Заголовок 3",
+      disc: "Описание 3",
+      data: "14.03.2024",
+      price: "50000",
+    },
+    {
+      url: img4,
+      title: "Заголовок 4",
+      disc: "Описание 4",
+      data: "15.03.2024",
+      price: "50000",
+    },
+    {
+      url: img5,
+      title: "Заголовок 4",
+      disc: "Описание 4",
+      data: "15.03.2024",
+      price: "50000",
+    },
+  ];
 
-//   useEffect(() => {
-//     const slider = sliderRef.current;
-//     if (slider) {
-//       const handleScroll = () => {
-//         const scrollWidth = slider.scrollWidth / 3;
-//         const scrollLeft = slider.scrollLeft;
+  return (
+    <div id={scss.Slider}>
+      <div className="container">
+        <div className={scss.slider}>
+          <div className={scss.block_s}>
+            <div className={scss.sliderContainer}>
+              <div className={scss.buttons}>
+                <h1>хиты продаж</h1>
+                <div className={scss.prew}>
+                  <button onClick={() => sliderRef.current?.slickPrev()}>
+                    <FaChevronLeft />
+                  </button>
+                  <button onClick={() => sliderRef.current?.slickNext()}>
+                    <FaChevronRight />
+                  </button>
+                </div>
+              </div>
+              <Slider ref={sliderRef} {...settings}>
+                {slides.map((slide, index) => (
+                  <div key={index} className={scss.sliderBox}>
+                    <div className={scss.innerBox}>
+                      <div className={scss.imageContainer}>
+                        <Image
+                          style={{ objectFit: "cover" }}
+                          src={slide.url}
+                          alt={`Image ${index + 1}`}
+                          layout="fill"
+                        />
+                      </div>
+                      <div className={scss.text}>
+                        <h1>{slide.title}</h1>
+                        <div className={scss.price}>
+                          <h2>{slide.price} сом</h2>
+                          <button className={scss.basket}>
+                            <GrCart />
+                          </button>
+                        </div>
+                        <div className={scss.detail}>
+                          <button className={scss.details}>Подробнее</button>
+                          <button className={scss.favorite}>o</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </Slider>
+            </div>
+            <div className={scss.image}>
+              <img
+                src="https://images.wallpaperscraft.ru/image/single/noutbuk_telefon_rabochij_stol_179989_3840x2160.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-//         if (scrollLeft >= 2 * scrollWidth) {
-//           slider.scrollLeft = scrollWidth;
-//         } else if (scrollLeft < scrollWidth) {
-//           slider.scrollLeft = scrollWidth;
-//         }
-//       };
-
-//       slider.addEventListener("scroll", handleScroll);
-
-//       slider.scrollLeft = slider.scrollWidth / 3;
-
-//       return () => slider.removeEventListener("scroll", handleScroll);
-//     }
-//   }, []);
-
-//   return (
-//     <div id={scss.Hits}>
-//       <div className="container">
-//         <div className={scss.hits}>
-//           <div className={scss.text}>
-//             <h1>Хиты продаж в этой категории</h1>
-//           </div>
-//           <div className={scss.scroll}>
-//             <button onClick={() => scrollSlider("prev")}>
-//               <GrPrevious />
-//             </button>
-//             <div ref={sliderRef} className={scss.slider}>
-//               {extendedData.map((el, index) => (
-//                 <div
-//                   onClick={() => router.push(`/details/${el.id}`)}
-//                   key={index}
-//                   className={scss.box}
-//                 >
-//                   <Image
-//                     src={el.image}
-//                     alt={el.model}
-//                     width={220} // Указываем ширину
-//                     height={250} // Указываем высоту
-//                   />
-//                   <h1>{el.model}</h1>
-//                   <div className={scss.price}>
-//                     <h2>{el.price} сом</h2>
-//                     <p>На витрине</p>
-//                   </div>
-//                   <div className={scss.buttons}>
-//                     <button>Купить</button>
-//                     <button className={scss.favorite}>
-//                       <MdFavoriteBorder />
-//                     </button>
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//             <button onClick={() => scrollSlider("next")}>
-//               <GrNext />
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Hits;
+export default Hits;

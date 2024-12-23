@@ -8,8 +8,10 @@ import Image from "next/image";
 import { GrCart } from "react-icons/gr";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
   const { searchQuery, setSearchQuery } = useSearchStore();
 
   return (
@@ -36,7 +38,7 @@ const Header = () => {
               <button>
                 <MdFavoriteBorder />
               </button>
-              <button>
+              <button onClick={() => router.push("/basket")}>
                 <GrCart />
               </button>
             </div>
