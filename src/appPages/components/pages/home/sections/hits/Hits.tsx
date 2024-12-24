@@ -1,10 +1,5 @@
 "use client";
 import React, { useRef } from "react";
-import img1 from "@/shared/images/eduhub.png";
-import img2 from "@/shared/images/DnI9rquWsAAgfKx-min.png";
-import img3 from "@/shared/images/hero_img.avif";
-import img4 from "@/shared/images/eduhub.png";
-import img5 from "@/shared/images/eduhub.png";
 import scss from "./Hits.module.scss";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import Image from "next/image";
 import { GrCart } from "react-icons/gr";
+import { useGetLaptopsQuery } from "@/redux/api/laptops";
 
 const Hits = () => {
   const sliderRef = useRef<Slider | null>(null);
@@ -39,44 +35,10 @@ const Hits = () => {
     ],
   };
 
-  const slides = [
-    {
-      url: img1,
-      title: "Заголовок 1",
-      disc: "Описание 1",
-      data: "12.03.2024",
-      price: "50000",
-    },
-    {
-      url: img2,
-      title: "Заголовок 2",
-      disc: "Описание 2",
-      data: "13.03.2024",
-      price: "50000",
-    },
-    {
-      url: img3,
-      title: "Заголовок 3",
-      disc: "Описание 3",
-      data: "14.03.2024",
-      price: "50000",
-    },
-    {
-      url: img4,
-      title: "Заголовок 4",
-      disc: "Описание 4",
-      data: "15.03.2024",
-      price: "50000",
-    },
-    {
-      url: img5,
-      title: "Заголовок 4",
-      disc: "Описание 4",
-      data: "15.03.2024",
-      price: "50000",
-    },
-  ];
+  const {data}=useGetLaptopsQuery()
 
+  console.log(data?.map((item)=> item.photos));
+  
   return (
     <div id={scss.Slider}>
       <div className="container">
@@ -95,19 +57,19 @@ const Hits = () => {
                 </div>
               </div>
               <Slider ref={sliderRef} {...settings}>
-                {slides.map((slide, index) => (
+                {data?.map((slide, index) => (
                   <div key={index} className={scss.sliderBox}>
                     <div className={scss.innerBox}>
                       <div className={scss.imageContainer}>
                         <Image
                           style={{ objectFit: "cover" }}
-                          src={slide.url}
+                          src={slide.photos[1]?.image}
                           alt={`Image ${index + 1}`}
                           layout="fill"
                         />
                       </div>
                       <div className={scss.text}>
-                        <h1>{slide.title}</h1>
+                        <h1>{slide.brand}</h1>
                         <div className={scss.price}>
                           <h2>{slide.price} сом</h2>
                           <button className={scss.basket}>

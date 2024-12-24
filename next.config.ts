@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
         pathname: "/upload/resize_cache/**",
       },
       {
-        protocol: "http", // Используется http для 13.48.55.185
+        protocol: "http",
         hostname: "13.48.55.185",
         pathname: "/media/**",
       },

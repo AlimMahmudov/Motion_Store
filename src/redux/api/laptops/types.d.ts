@@ -4,7 +4,7 @@
 
   export type GetResponse = {
     id: number;
-    photos: { url: string }[];
+    photos: { image: string }[];
     brand: string;
     model: string;
     processor: string;
