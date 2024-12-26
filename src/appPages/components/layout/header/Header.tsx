@@ -35,9 +35,11 @@ const Header = () => {
           </Link>
           <div className={scss.content}>
             <div className={scss.icons}>
-              <button onClick={() => router.push("/favorite")}>
-                <MdFavoriteBorder />
-              </button>
+              <Link href={"/favorite"}>
+                <button>
+                  <MdFavoriteBorder />
+                </button>
+              </Link>
               <button onClick={() => router.push("/basket")}>
                 <GrCart />
               </button>
