@@ -1,6 +1,8 @@
 "use client";
 import scss from "./Contact.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { FaPhone } from "react-icons/fa";
+
 import axios from "axios";
 
 interface IFormTelegram {
@@ -70,7 +72,10 @@ const Contact = () => {
                   Мы всегда готовы ответить на ваши вопросы, помочь с выбором
                   продукции и оформить заказ.
                 </h2>
-                <p>+996 700 000 000</p>
+                <p>
+                  {" "}
+                  <FaPhone /> +996 700 000 000
+                </p>
               </div>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.416611778638!2d74.58664537621395!3d42.88515617114894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec803359c4fa7%3A0x81ed8d9924c0fa9d!2zMTEwINGD0LsuINCc0LDQvdCw0YHQsCwg0JHQuNGI0LrQtdC6!5e0!3m2!1sru!2skg!4v1734705339685!5m2!1sru!2skg"

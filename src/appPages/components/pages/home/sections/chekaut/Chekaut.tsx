@@ -20,18 +20,14 @@ const Chekaut = () => {
               <IoPricetagsOutline />
             </button>
 
-            <h1>
-              100% оригинальные <br /> товары
-            </h1>
+            <h1>100% оригинальные товары</h1>
           </div>
           <div data-aos="fade-up" data-aos-delay="400" className={scss.box}>
             <button>
               <FaLaptopCode />
             </button>
 
-            <h1>
-              Очень мощная и <br /> безопасная упаковка
-            </h1>
+            <h1>Очень мощная и безопасная упаковка</h1>
           </div>
           <div data-aos="fade-up" data-aos-delay="600" className={scss.box}>
             <button>

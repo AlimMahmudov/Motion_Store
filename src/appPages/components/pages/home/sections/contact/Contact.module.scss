@@ -117,6 +117,9 @@
           p {
             font-size: 18px;
             color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
           }
         }
         iframe {

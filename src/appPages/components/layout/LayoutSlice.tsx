@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import scss from "./LayoutSlice.module.scss";
-import Header from "./header/Header";
+// import Header from "./header/Header";
 import Footer from "./footer/Footer";
 
 interface LayoutSliceProps {
@@ -10,7 +10,7 @@ interface LayoutSliceProps {
 const LayoutSlice: FC<LayoutSliceProps> = ({ children }) => {
   return (
     <div id={scss.LayoutSlice}>
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
       <Footer />
     </div>

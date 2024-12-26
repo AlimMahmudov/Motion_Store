@@ -4,7 +4,19 @@
     .btn {
       display: flex;
       flex-wrap: wrap;
-      
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .Sort {
+    margin-top: 50px;
+    padding: 0px 50px;
+    .content {
+      .btn {
+        display: flex;
+        flex-wrap: wrap;
+      }
     }
   }
 }
