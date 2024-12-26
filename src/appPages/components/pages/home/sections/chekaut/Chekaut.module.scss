@@ -26,3 +26,38 @@
     }
   }
 }
+
+@media (max-width: 1000px) {
+  #Chekaut {
+    background: #cfcfcf;
+    padding: 50px;
+    .chekaut {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      gap: 10px;
+      .box {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        button {
+          padding: 10px;
+          font-size: 40px;
+          color: #080077;
+          background: #fff;
+          border: none;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        h1 {
+          font-size: 18px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

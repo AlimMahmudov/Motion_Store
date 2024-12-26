@@ -12,7 +12,7 @@ const Home = () => {
       </div>
 
       {/* Централизованный контент */}
-      <div className={scss.content}>
+      <div data-aos="fade-up" className={scss.content}>
         <h1 className={scss.title}>Ноутбуки от EduHub</h1>
         <p className={scss.description}>
           Широкий выбор моделей для учебы, работы и творчества. Качество,

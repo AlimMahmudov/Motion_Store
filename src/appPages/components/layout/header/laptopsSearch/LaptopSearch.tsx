@@ -4,6 +4,7 @@ import scss from "./LaptopSearch.module.scss";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useSearchStore } from "@/appPages/stores/searchStore";
 import { AiOutlineLeft } from "react-icons/ai";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
@@ -25,7 +26,7 @@ const LaptopSearch = () => {
   }
 
   const filteredData = data.filter((el) =>
-    el.brand.toLowerCase().includes(searchQuery.toLowerCase())
+    el.model.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
   );
 
   return (
@@ -39,9 +40,9 @@ const LaptopSearch = () => {
         <div className={scss.laptops}>
           <div className={scss.block}>
             {filteredData.length > 0 ? (
-              filteredData.map((el, index) => (
+              filteredData.map((el) => (
                 <div key={el.id} className={scss.box}>
-                  <Image src={test} alt={el.model} width={220} height={250} />
+                  <Image width={220} height={250} src={test} alt="img" />
                   <h1>{el.model}</h1>
                   <div className={scss.price}>
                     <h2>{el.price} сом</h2>

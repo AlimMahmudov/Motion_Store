@@ -36,7 +36,11 @@ const Contact = () => {
       <div className="container">
         <div className={scss.content}>
           <div className={scss.contact}>
-            <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
+            <form
+              data-aos="fade-right"
+              className={scss.form}
+              onSubmit={handleSubmit(onSubmit)}
+            >
               <div className={scss.inputs}>
                 <h1>Оставьте заявку</h1>
                 <input
@@ -59,7 +63,7 @@ const Contact = () => {
                 <button type="submit">Оставьте заявку</button>
               </div>
             </form>
-            <div className={scss.map}>
+            <div data-aos="fade-left" className={scss.map}>
               <div className={scss.map_text}>
                 <h1>Контакты</h1>
                 <h2>

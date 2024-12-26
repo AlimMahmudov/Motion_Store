@@ -8,6 +8,7 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import Image from "next/image";
 import { GrCart } from "react-icons/gr";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
+import test from "@/shared/images/DnI9rquWsAAgfKx-min.png";
 
 const Hits = () => {
   const sliderRef = useRef<Slider | null>(null);
@@ -35,17 +36,17 @@ const Hits = () => {
     ],
   };
 
-  const {data}=useGetLaptopsQuery()
+  const { data } = useGetLaptopsQuery();
 
-  console.log(data?.map((item)=> item.photos));
-  
+  console.log(data?.map((item) => item.photos));
+
   return (
     <div id={scss.Slider}>
       <div className="container">
         <div className={scss.slider}>
           <div className={scss.block_s}>
             <div className={scss.sliderContainer}>
-              <div className={scss.buttons}>
+              <div data-aos="fade-up" className={scss.buttons}>
                 <h1>хиты продаж</h1>
                 <div className={scss.prew}>
                   <button onClick={() => sliderRef.current?.slickPrev()}>
@@ -58,7 +59,11 @@ const Hits = () => {
               </div>
               <Slider ref={sliderRef} {...settings}>
                 {data?.map((slide, index) => (
-                  <div key={index} className={scss.sliderBox}>
+                  <div
+                    data-aos="fade-up"
+                    key={index}
+                    className={scss.sliderBox}
+                  >
                     <div className={scss.innerBox}>
                       <div className={scss.imageContainer}>
                         <Image
@@ -86,11 +91,8 @@ const Hits = () => {
                 ))}
               </Slider>
             </div>
-            <div className={scss.image}>
-              <img
-                src="https://images.wallpaperscraft.ru/image/single/noutbuk_telefon_rabochij_stol_179989_3840x2160.jpg"
-                alt=""
-              />
+            <div data-aos="fade-left" className={scss.image}>
+              <Image src={test} alt="img" />
             </div>
           </div>
         </div>

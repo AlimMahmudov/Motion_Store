@@ -4,22 +4,56 @@ import scss from "./Laptops.module.scss";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
 import Image from "next/image";
-import test from "@/shared/images/hero_img.avif";
 import { GrCart } from "react-icons/gr";
+import { useFilterStore } from "@/appPages/stores/sortStore";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Laptops = () => {
   const router = useRouter();
   const { data } = useGetLaptopsQuery();
   console.log(data, "heli");
 
+  useEffect(() => {
+    AOS.init({ duration: 10000 }); // Устанавливаем продолжительность анимации
+  }, []);
+
+  const { selectedType, selectedCategory } = useFilterStore();
+
+  const filteredData = data?.filter((el) => {
+    const matchesType = selectedType ? el.brand === selectedType : true;
+    const matchesCategory = selectedCategory
+      ? el.brand === selectedCategory
+      : true;
+    return matchesType && matchesCategory;
+  });
+
   return (
     <div id={scss.Laptops}>
       <div className="container">
         <div className={scss.laptops}>
           <div className={scss.block}>
-            {data?.map((el) => (
-              <div key={el.id} className={scss.box}>
-                <Image src={test} alt={el.model} width={220} height={250} />
+            {filteredData?.map((el, index) => (
+              <div
+                data-aos="fade-up"
+                data-aos-delay={index * 100} // Увеличиваем задержку для каждого элемента
+                key={el.id}
+                className={scss.box}
+              >
+                {el.photos.map(
+                  (item, photoIndex) =>
+                    photoIndex === 0 && (
+                      <Image
+                        width={220}
+                        height={250}
+                        key={photoIndex}
+                        src={item.image}
+                        alt="img"
+                      />
+                    )
+                )}
+
                 <h1>{el.model}</h1>
                 <div className={scss.price}>
                   <h2>{el.price} сом</h2>

@@ -35,7 +35,7 @@ const Header = () => {
           </Link>
           <div className={scss.content}>
             <div className={scss.icons}>
-              <button>
+              <button onClick={() => router.push("/favorite")}>
                 <MdFavoriteBorder />
               </button>
               <button onClick={() => router.push("/basket")}>

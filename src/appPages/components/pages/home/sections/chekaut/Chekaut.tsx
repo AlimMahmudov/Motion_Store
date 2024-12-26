@@ -9,13 +9,13 @@ const Chekaut = () => {
     <div id={scss.Chekaut}>
       <div className="container">
         <div className={scss.chekaut}>
-          <div className={scss.box}>
+          <div data-aos="fade-up" data-aos-delay="0" className={scss.box}>
             <button>
               <IoShieldCheckmarkOutline />
             </button>
             <h1>Гарантия 1 год</h1>
           </div>
-          <div className={scss.box}>
+          <div data-aos="fade-up" data-aos-delay="200" className={scss.box}>
             <button>
               <IoPricetagsOutline />
             </button>
@@ -24,16 +24,16 @@ const Chekaut = () => {
               100% оригинальные <br /> товары
             </h1>
           </div>
-          <div className={scss.box}>
+          <div data-aos="fade-up" data-aos-delay="400" className={scss.box}>
             <button>
               <FaLaptopCode />
             </button>
 
             <h1>
-              Очень мочная и <br /> безопасная упоковка
+              Очень мощная и <br /> безопасная упаковка
             </h1>
           </div>
-          <div className={scss.box}>
+          <div data-aos="fade-up" data-aos-delay="600" className={scss.box}>
             <button>
               <FaSortAmountDown />
             </button>
