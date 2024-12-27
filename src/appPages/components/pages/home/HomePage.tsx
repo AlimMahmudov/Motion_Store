@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Home from "./sections/home/Home";
 import Laptops from "./sections/laptops/Laptops";
 import Contact from "./sections/contact/Contact";
-// import Hits from "./sections/hits/Hits";
+import Hits from "./sections/hits/Hits";
 import Sort from "./sections/sort/Sort";
 import Chekaut from "./sections/chekaut/Chekaut";
 import AOS from "aos";
@@ -23,7 +23,7 @@ const HomePage = () => {
       <Sort />
       <Laptops />
       <Chekaut />
-      {/* <Hits /> */}
+      <Hits />
       <Contact />
     </div>
   );

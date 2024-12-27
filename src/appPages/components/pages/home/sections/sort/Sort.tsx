@@ -9,6 +9,11 @@ const Sort = () => {
   const { data } = useGetLaptopsQuery();
   console.log(data, "sort");
 
+  // Получение уникальных брендов
+  const uniqueBrands = data
+    ? Array.from(new Set(data.map((el) => el.brand)))
+    : [];
+
   const handleTypeClick = (type: string) => {
     setSelectedType(selectedType === type ? "" : type);
   };
@@ -39,13 +44,13 @@ const Sort = () => {
               </button>
             </div>
 
-            {data?.map((el, index) => (
+            {uniqueBrands.map((brand, index) => (
               <div key={index} className="filter-description">
                 <button
-                  style={getButtonStyle(selectedType === el.brand)}
-                  onClick={() => handleTypeClick(el.brand)}
+                  style={getButtonStyle(selectedType === brand)}
+                  onClick={() => handleTypeClick(brand)}
                 >
-                  {el.brand}
+                  {brand}
                 </button>
               </div>
             ))}

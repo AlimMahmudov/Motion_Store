@@ -1,99 +1,98 @@
-"use client";
-import React, { useRef } from "react";
-import scss from "./Hits.module.scss";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { GrCart } from "react-icons/gr";
-import { useGetLaptopsQuery } from "@/redux/api/laptops";
+import scss from "./Hits.module.scss";
 import test from "@/shared/images/DnI9rquWsAAgfKx-min.png";
 
 const Hits = () => {
-  const sliderRef = useRef<Slider | null>(null);
+  const [data, setData] = useState([
+    {
+      image: test,
+      name: "alim",
+      age: "19",
+    },
+    {
+      image: test,
+      name: "asim",
+      age: "19",
+    },
+    {
+      image: test,
+      name: "marlen",
+      age: "17",
+    },
+    {
+      image: test,
+      name: "salamalik",
+      age: "17",
+    },
+  ]);
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  const loadMore = () => {
+    setData((prevData) => [...prevData, ...prevData]);
   };
 
-  const { data } = useGetLaptopsQuery();
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      if (scrollLeft + clientWidth >= scrollWidth - 5) {
+        loadMore();
+      }
+    }
+  };
 
-  console.log(data?.map((item) => item.photos));
+  const next = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: 320,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const prev = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: -320,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.addEventListener("scroll", handleScroll);
+    }
+    return () => {
+      if (scrollRef.current) {
+        scrollRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
 
   return (
-    <div id={scss.Slider}>
+    <div id={scss.Scroll}>
       <div className="container">
-        <div className={scss.slider}>
-          <div className={scss.block_s}>
-            <div className={scss.sliderContainer}>
-              <div data-aos="fade-up" className={scss.buttons}>
-                <h1>хиты продаж</h1>
-                <div className={scss.prew}>
-                  <button onClick={() => sliderRef.current?.slickPrev()}>
-                    <FaChevronLeft />
-                  </button>
-                  <button onClick={() => sliderRef.current?.slickNext()}>
-                    <FaChevronRight />
-                  </button>
+        <div className={scss.scroll}>
+          <div className={scss.text}>
+            <h1>Хиты продаж</h1>
+            <div className={scss.buttons}>
+              <button onClick={prev}>prev</button>
+              <button onClick={next}>next</button>
+            </div>
+          </div>
+          <div className={scss.slider}>
+            <div className={scss.block} ref={scrollRef}>
+              {data.map((el, index) => (
+                <div key={index} className={scss.box}>
+                  <Image src={el.image} alt="" />
+                  <h1>{el.name}</h1>
+                  <p>{el.age}</p>
                 </div>
-              </div>
-              <Slider ref={sliderRef} {...settings}>
-                {data?.map((slide, index) => (
-                  <div
-                    data-aos="fade-up"
-                    key={index}
-                    className={scss.sliderBox}
-                  >
-                    <div className={scss.innerBox}>
-                      <div className={scss.imageContainer}>
-                        <Image
-                          style={{ objectFit: "cover" }}
-                          src={slide.photos[1]?.image}
-                          alt={`Image ${index + 1}`}
-                          layout="fill"
-                        />
-                      </div>
-                      <div className={scss.text}>
-                        <h1>{slide.brand}</h1>
-                        <div className={scss.price}>
-                          <h2>{slide.price} сом</h2>
-                          <button className={scss.basket}>
-                            <GrCart />
-                          </button>
-                        </div>
-                        <div className={scss.detail}>
-                          <button className={scss.details}>Подробнее</button>
-                          <button className={scss.favorite}>o</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </Slider>
+              ))}
             </div>
-            <div data-aos="fade-left" className={scss.image}>
-              <Image src={test} alt="img" />
-            </div>
+            <Image src={test} alt="" />
           </div>
         </div>
       </div>
