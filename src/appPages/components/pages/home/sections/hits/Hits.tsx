@@ -1,98 +1,99 @@
-import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+"use client";
+import React, { useRef } from "react";
 import scss from "./Hits.module.scss";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import Image from "next/image";
+import { GrCart } from "react-icons/gr";
+import { useGetLaptopsQuery } from "@/redux/api/laptops";
 import test from "@/shared/images/DnI9rquWsAAgfKx-min.png";
 
 const Hits = () => {
-  const [data, setData] = useState([
-    {
-      image: test,
-      name: "alim",
-      age: "19",
-    },
-    {
-      image: test,
-      name: "asim",
-      age: "19",
-    },
-    {
-      image: test,
-      name: "marlen",
-      age: "17",
-    },
-    {
-      image: test,
-      name: "salamalik",
-      age: "17",
-    },
-  ]);
+  const sliderRef = useRef<Slider | null>(null);
 
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-
-  const loadMore = () => {
-    setData((prevData) => [...prevData, ...prevData]);
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      if (scrollLeft + clientWidth >= scrollWidth - 5) {
-        loadMore();
-      }
-    }
-  };
-
-  const next = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: 320,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const prev = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: -320,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.addEventListener("scroll", handleScroll);
-    }
-    return () => {
-      if (scrollRef.current) {
-        scrollRef.current.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, []);
+  const { data } = useGetLaptopsQuery();
 
   return (
-    <div id={scss.Scroll}>
+    <div id={scss.Slider}>
       <div className="container">
-        <div className={scss.scroll}>
-          <div className={scss.text}>
-            <h1>Хиты продаж</h1>
-            <div className={scss.buttons}>
-              <button onClick={prev}>prev</button>
-              <button onClick={next}>next</button>
-            </div>
-          </div>
-          <div className={scss.slider}>
-            <div className={scss.block} ref={scrollRef}>
-              {data.map((el, index) => (
-                <div key={index} className={scss.box}>
-                  <Image src={el.image} alt="" />
-                  <h1>{el.name}</h1>
-                  <p>{el.age}</p>
+        <div className={scss.slider}>
+          <div className={scss.block_s}>
+            <div className={scss.sliderContainer}>
+              <div className={scss.buttons}>
+                <h1>хиты продаж</h1>
+                <div className={scss.prew}>
+                  <button onClick={() => sliderRef.current?.slickPrev()}>
+                    <FaChevronLeft />
+                  </button>
+                  <button onClick={() => sliderRef.current?.slickNext()}>
+                    <FaChevronRight />
+                  </button>
                 </div>
-              ))}
+              </div>
+              <Slider ref={sliderRef} {...settings}>
+                {data?.map((el, index) => (
+                  <div key={index} className={scss.sliderBox}>
+                    <div className={scss.innerBox}>
+                      <div className={scss.imageContainer}>
+                        {el.photos.map(
+                          (item, photoIndex) =>
+                            photoIndex === 0 && (
+                              <Image
+                                width={220}
+                                height={250}
+                                key={photoIndex}
+                                src={item.image}
+                                alt="img"
+                              />
+                            )
+                        )}
+                      </div>
+                      <div className={scss.text}>
+                        <h1>{el.model}</h1>
+                        <div className={scss.price}>
+                          <h2>{el.price} сом</h2>
+                          <button className={scss.basket}>
+                            <GrCart />
+                          </button>
+                        </div>
+                        <div className={scss.detail}>
+                          <button className={scss.details}>Подробнее</button>
+                          <button className={scss.favorite}>o</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </Slider>
             </div>
-            <Image src={test} alt="" />
+            <div className={scss.image}>
+              <Image src={test} alt="img" />
+            </div>
           </div>
         </div>
       </div>
