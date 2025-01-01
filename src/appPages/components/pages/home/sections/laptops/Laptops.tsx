@@ -1,22 +1,22 @@
 "use client";
 import { useRouter } from "next/navigation";
 import scss from "./Laptops.module.scss";
-import { MdFavoriteBorder } from "react-icons/md";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
 import Image from "next/image";
 import { GrCart } from "react-icons/gr";
 import { useFilterStore } from "@/appPages/stores/sortStore";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Laptops = () => {
   const router = useRouter();
   const { data } = useGetLaptopsQuery();
-  console.log(data, "heli");
+  const [visibleCount, setVisibleCount] = useState(10);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    AOS.init({ duration: 10000 }); // Устанавливаем продолжительность анимации
+    AOS.init({ duration: 1000 });
   }, []);
 
   const { selectedType, selectedCategory } = useFilterStore();
@@ -29,12 +29,22 @@ const Laptops = () => {
     return matchesType && matchesCategory;
   });
 
+  const handleShowMore = () => {
+    if (!showAll) {
+      setVisibleCount(filteredData?.length || 0);
+      setShowAll(true);
+    } else {
+      setVisibleCount(10);
+      setShowAll(false);
+    }
+  };
+
   return (
     <div id={scss.Laptops}>
       <div className="container">
         <div className={scss.laptops}>
           <div className={scss.block}>
-            {filteredData?.map((el, index) => (
+            {filteredData?.slice(0, visibleCount).map((el, index) => (
               <div
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
@@ -55,27 +65,25 @@ const Laptops = () => {
                       )
                   )}
                 </div>
-
                 <div className={scss.box_text}>
                   <h1>{el.model}</h1>
                   <div className={scss.price}>
                     <h2>{el.price} сом</h2>
-                    <button>
-                      <GrCart />
-                    </button>
                   </div>
                   <div className={scss.buttons}>
                     <button onClick={() => router.push(`/details/${el.id}`)}>
                       Подробнее
-                    </button>
-                    <button className={scss.favorite}>
-                      <MdFavoriteBorder />
                     </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+          {filteredData?.length > 10 && (
+            <button className={scss.More} onClick={handleShowMore}>
+              {showAll ? "СВЕРНУТЬ" : "ЕЩЕ"}
+            </button>
+          )}
         </div>
       </div>
     </div>

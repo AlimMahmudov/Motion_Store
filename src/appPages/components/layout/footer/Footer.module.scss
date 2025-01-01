@@ -1,14 +1,17 @@
 #Footer {
-	background: black;
-	.content {
-		width: 100%;
-		padding: 20px 0;
-		display: flex;
-		justify-content: space-between;
-
-    p{
+  background: black;
+  .content {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    p {
       color: #ffffff;
-      font-size: 14px;
+      font-size: 15px;
     }
+	.reklam{
+		color: #ffffffc1;
+		font-size: 13px;
+
 	}
+  }
 }

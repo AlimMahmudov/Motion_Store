@@ -3,6 +3,7 @@
   };
 
   export type GetResponse = {
+    isHit: unknown;
     id: number;
     photos: { image: string }[];
     brand: string;

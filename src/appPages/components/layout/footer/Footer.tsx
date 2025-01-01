@@ -4,8 +4,8 @@ const Footer = () => {
   return <footer id={scss.Footer}>
     <div className="container">
       <div className={scss.content}>
-        <p>© 2024 «EduHub». Все права защищены</p>
-        <p>Разработал Sky Level</p>
+        <p>© 2025 «EduHub». Все права защищены!</p>
+      <p className={scss.reklam}>Разработано в команде SkyLevel</p>
       </div>
     </div>
   </footer>;

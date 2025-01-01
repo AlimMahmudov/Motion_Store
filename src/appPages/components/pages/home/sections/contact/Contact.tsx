@@ -48,17 +48,17 @@ const Contact = () => {
                 <input
                   type="text"
                   {...register("name", { required: true })}
-                  placeholder="Your Name"
+                  placeholder="Ваше имя"
                 />
                 <input
                   type="text"
                   {...register("number", { required: true })}
-                  placeholder="Your number"
+                  placeholder="Ваш номер"
                 />
 
                 <textarea
                   {...register("message", { required: true })}
-                  placeholder="message"
+                  placeholder="Сообщение"
                 ></textarea>
               </div>
               <div className={scss.buttons}>

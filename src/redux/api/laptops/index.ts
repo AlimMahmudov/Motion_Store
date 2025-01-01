@@ -6,7 +6,7 @@ const api = index.injectEndpoints({
   endpoints: (build) => ({
     getLaptops: build.query<GetResponse, void>({
       query: () => ({
-        url: "/laptops",
+        url: "/laptops/",
         method: "GET",
       }),
       providesTags: ["laptops"],

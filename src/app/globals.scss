@@ -17,22 +17,15 @@ a {
 
 body {
   background: #eeeeee;
-  font-family: sans-serif;
 }
 
 button {
   cursor: pointer;
 }
 
+
 ::-webkit-scrollbar {
-  width: 1px;
+  width: 0px;
 }
 
-::-webkit-scrollbar-track {
-  background-color: #01003000;
-}
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #0300c400);
-  border-radius: 10px;
-}

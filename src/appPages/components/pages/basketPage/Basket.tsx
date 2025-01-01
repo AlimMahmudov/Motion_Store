@@ -1,57 +1,60 @@
 "use client";
-import { useEffect, useState } from "react";
 import scss from "./Basket.module.scss";
 import Image from "next/image";
-interface IProduct {
-  id?: number;
-  brand: string;
-  model: string;
-  processor: string;
-  Ram: string;
-  storage: string;
-  price: string;
-  Description: string;
-  image: string;
-  addedAt: string;
-}
+import useBasketStore from "@/appPages/stores/useBasketStore";
 
 const Basket = () => {
-  const [products, setProducts] = useState<IProduct[]>([]);
-
-  console.log(products, "helo");
-
-  useEffect(() => {
-    const storedProducts = localStorage.getItem("product");
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts));
-    }
-  }, []);
+  const { basket, addToBasket, deleteOneBasket } = useBasketStore();
 
   return (
     <div id={scss.Basket}>
       <div className="container">
-        {products.length === 0 ? (
-          <p>Корзина пуста</p>
+        {basket.length === 0 ? (
+          <p className={scss.emptyBasket}>Корзина пуста</p>
         ) : (
           <div className={scss.content}>
-            {products?.map((el, index) => (
-              <div key={index} className={scss.product}>
-                <Image
-                  src={el.image}
-                  alt={el.model}
-                  width={200}
-                  height={200}
-                  style={{ objectFit: "cover" }}
-                />
-                <h2>Модель: {el.model}</h2>
-                <h2>{el.price} сом</h2>
-                <div className={scss.count}>
-                  <button className={scss.btn1}>+</button>
-                  <button className={scss.btn2}>-</button>
-                  <p>Добавлено: {new Date(el.addedAt).toLocaleDateString()}</p>
+            {basket.map((el) => (
+              <div key={el.id} className={scss.product}>
+                <div className={scss.box_img}>
+                  {el.photos?.map(
+                    (item, index) =>
+                      index === 0 && (
+                        <Image
+                          key={index}
+                          width={250}
+                          height={200}
+                          src={item.image}
+                          alt="img"
+                        />
+                      )
+                  )}
+                </div>
+                <div className={scss.details}>
+                  <h2 className={scss.model}>Модель: {el.model}</h2>
+                  <h3 className={scss.price}>
+                    Цена: {el.price * el.quantity} сом
+                  </h3>
+                  <div className={scss.quantity}>
+                    <button
+                      onClick={() => deleteOneBasket(el)}
+                      className={scss.decrease}
+                    >
+                      -
+                    </button>
+                    <span>{el.quantity}</span>
+                    <button
+                      onClick={() => addToBasket(el)}
+                      className={scss.increase}
+                    >
+                      +
+                    </button>
+                  </div>
+                  <p className={scss.addedAt}>
+                    Добавлено: {new Date(el.addedAt).toLocaleString()}
+                  </p>
                 </div>
               </div>
-            ))}             
+            ))}
           </div>
         )}
       </div>

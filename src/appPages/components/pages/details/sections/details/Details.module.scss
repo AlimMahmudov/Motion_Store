@@ -2,13 +2,15 @@
   padding-top: 100px;
   padding: 100px 50px;
   .details {
+    gap: 30px;
     display: flex;
-    justify-content: space-around;
-    align-items: start;
-    // gap: 50px;
+    align-items: center;
+    justify-content: center;
 
     img {
-      width: 350px;
+      width: 450px;
+      height: auto;
+      border-radius: 10px;
     }
     .text {
       display: flex;
@@ -37,7 +39,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 85%;
+            width: 100%;
             height: 40px;
             background: #080077;
             color: #ffffff;
@@ -50,15 +52,6 @@
               transform: scale(1.05);
               transition: all 0.3s;
             }
-          }
-          .favorite {
-            width: 40px;
-            height: 40px;
-            background: #080077;
-            color: #ffffff;
-            font-size: 20px;
-            border: none;
-            border-radius: 5px;
           }
         }
       }
@@ -75,8 +68,6 @@
       justify-content: space-around;
       flex-direction: column;
       align-items: center;
-      // gap: 50px;
-
       img {
         width: 400px;
         height: 400px;
@@ -108,7 +99,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              width: 85%;
+              width: 100%;
               height: 40px;
               background: #080077;
               color: #ffffff;
@@ -180,7 +171,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              width: 85%;
+              width: 100%;
               height: 40px;
               background: #080077;
               color: #ffffff;
@@ -234,7 +225,7 @@
         }
 
         p {
-          font-size: 14px;
+          font-size: 15px;
         }
         .haracter {
           display: flex;
@@ -252,7 +243,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              width: 85%;
+              width: 100%;
               height: 40px;
               background: #080077;
               color: #ffffff;
@@ -265,15 +256,6 @@
                 transform: scale(1.05);
                 transition: all 0.3s;
               }
-            }
-            .favorite {
-              width: 40px;
-              height: 40px;
-              background: #080077;
-              color: #ffffff;
-              font-size: 20px;
-              border: none;
-              border-radius: 5px;
             }
           }
         }

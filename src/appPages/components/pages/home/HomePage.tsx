@@ -6,12 +6,12 @@ import Contact from "./sections/contact/Contact";
 import Hits from "./sections/hits/Hits";
 import Sort from "./sections/sort/Sort";
 import Chekaut from "./sections/chekaut/Chekaut";
-import AOS from "aos";
 import "aos/dist/aos.css";
+import Aos from "aos";
 
 const HomePage = () => {
   useEffect(() => {
-    AOS.init({
+    Aos.init({
       duration: 1000,
       once: true,
     });
