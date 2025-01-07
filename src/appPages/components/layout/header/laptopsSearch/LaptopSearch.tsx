@@ -16,7 +16,8 @@ const LaptopSearch = () => {
     return <p>Загрузка...</p>;
   }
 
-  const filteredData = data.filter((el) =>
+  // Проверяем, если data не определено, устанавливаем пустой массив
+  const filteredData = (data || []).filter((el) =>
     el.model.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
   );
 

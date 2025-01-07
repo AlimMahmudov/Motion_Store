@@ -2,18 +2,81 @@
 import scss from "./Basket.module.scss";
 import Image from "next/image";
 import useBasketStore from "@/appPages/stores/useBasketStore";
+import Link from "next/link";
+import { SubmitHandler, useForm } from "react-hook-form";
+import axios from "axios";
+
+// Тип для элемента корзины
+type BasketItem = {
+  id: number;
+  model: string;
+  brand: string;
+  price: number;
+  quantity: number;
+  photos?: { image: string }[];
+  addedAt: string;
+};
+
+type IFormTelegram = {
+  phone: string;
+  email: string;
+  basket: [BasketItem];
+};
 
 const Basket = () => {
   const { basket, addToBasket, deleteOneBasket } = useBasketStore();
+  const { register, handleSubmit, reset } = useForm<IFormTelegram>();
+
+  const messageModel = (data: IFormTelegram) => {
+    let messageTG = `<b>Product Order</b>\n`;
+    basket.forEach((item) => {
+      messageTG += `\nName: <b>${item.model}</b>\n`;
+      messageTG += `Description: ${item.brand}\n`;
+      messageTG += `Price: ${Number(item.price)} x ${Number(item.quantity)} = ${
+        Number(item.price) * Number(item.quantity)
+      } сом\n`;
+    });
+    messageTG += `\nPhone: ${data.phone}\n`;
+    messageTG += `Email: ${data.email}\n`;
+    return messageTG;
+  };
+
+  const onSubmit: SubmitHandler<IFormTelegram> = async (data) => {
+    try {
+      await axios.post(
+        `https://api.telegram.org/bot${"7350084863:AAGNHWJpQ7qif2WAAinzTBqVX3nwE-0sgbk"}/sendMessage`,
+        {
+          chat_id: -1002178370559,
+          parse_mode: "html",
+          text: messageModel(data),
+        }
+      );
+      alert("Данные успешно отправлены!");
+      reset();
+    } catch (error) {
+      console.error("Ошибка при отправке данных в Telegram:", error);
+      alert("Произошла ошибка при отправке. Попробуйте позже.");
+    }
+  };
 
   return (
     <div id={scss.Basket}>
       <div className="container">
         {basket.length === 0 ? (
-          <p className={scss.emptyBasket}>Корзина пуста</p>
+          <div className={scss.emptyBasket}>
+            <h1>Корзина пуста</h1>
+            <p>
+              Загляните на главную, чтобы выбрать товары или найдите нужное в
+              поиске
+            </p>
+            <button>
+              <Link href="/">Перейти на главную</Link>
+            </button>
+          </div>
         ) : (
           <div className={scss.content}>
             {basket.map((el) => (
+              // Приводим тип к BasketItem
               <div key={el.id} className={scss.product}>
                 <div className={scss.box_img}>
                   {el.photos?.map(
@@ -32,7 +95,7 @@ const Basket = () => {
                 <div className={scss.details}>
                   <h2 className={scss.model}>Модель: {el.model}</h2>
                   <h3 className={scss.price}>
-                    Цена: {el.price * el.quantity} сом
+                    Цена: {Number(el.price) * Number(el.quantity)} сом
                   </h3>
                   <div className={scss.quantity}>
                     <button
@@ -49,12 +112,26 @@ const Basket = () => {
                       +
                     </button>
                   </div>
-                  <p className={scss.addedAt}>
-                    Добавлено: {new Date(el.addedAt).toLocaleString()}
-                  </p>
+                  {/* <p className={scss.addedAt}>
+                    Добавлено:{" "}
+                    {el.addedAt
+                      ? new Date(el.addedAt).toLocaleString()
+                      : "Дата не указана"}
+                  </p> */}
                 </div>
               </div>
             ))}
+            <form onSubmit={handleSubmit(onSubmit)} className={scss.form}>
+              <label>
+                <p>Телефон</p>
+                <input type="tel" {...register("phone")} required />
+              </label>
+              <label>
+                <p>Email</p>
+                <input type="email" {...register("email")} required />
+              </label>
+              <button type="submit">Отправить заказ</button>
+            </form>
           </div>
         )}
       </div>

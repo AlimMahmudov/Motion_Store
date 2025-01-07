@@ -2,6 +2,45 @@
   margin-top: 5%;
   padding: 20px;
   background-color: #f7f7f7;
+
+  .emptyBasket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    h1 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      width: 410px;
+      text-align: center;
+      color: #6b6b6b;
+    }
+
+    button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2c267d;
+
+      border: none;
+
+      a {
+        color: #fff;
+      }
+      &:hover {
+        background: #0b00aa;
+        transition: all 0.3s;
+      }
+    }
+  }
+
   .content {
     display: flex;
     flex-direction: column;
@@ -95,13 +134,13 @@
       }
     }
   }
-  @media(max-width:425px){
+  @media (max-width: 425px) {
     .content {
       display: flex;
       justify-content: space-between;
       flex-direction: column;
       gap: 20px;
-  
+
       .product {
         display: flex;
         align-items: center;
@@ -110,35 +149,35 @@
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  
+
         .box_img {
           flex-shrink: 0;
-  
+
           img {
             border-radius: 10px;
           }
         }
-  
+
         .details {
           flex: 1;
-  
+
           .model {
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 10px;
           }
-  
+
           .price {
             font-size: 18px;
             color: #333;
             margin-bottom: 10px;
           }
-  
+
           .quantity {
             display: flex;
             align-items: center;
             gap: 10px;
-  
+
             button {
               width: 30px;
               height: 30px;
@@ -150,36 +189,36 @@
               color: #333;
               cursor: pointer;
               transition: background-color 0.3s;
-  
+
               &:hover {
                 background-color: #bbb;
               }
             }
-  
+
             .increase {
               background-color: rgb(119, 189, 119);
               color: #fff;
-  
+
               &:hover {
                 background-color: rgb(97, 160, 97);
               }
             }
-  
+
             .decrease {
               background-color: rgb(255, 66, 66);
               color: #fff;
-  
+
               &:hover {
                 background-color: rgb(220, 50, 50);
               }
             }
-  
+
             span {
               font-size: 18px;
               font-weight: bold;
             }
           }
-  
+
           .addedAt {
             font-size: 14px;
             color: #888;

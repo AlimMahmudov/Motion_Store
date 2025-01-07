@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import scss from "./Laptops.module.scss";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
 import Image from "next/image";
-import { GrCart } from "react-icons/gr";
+// import { GrCart } from "react-icons/gr";
 import { useFilterStore } from "@/appPages/stores/sortStore";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -79,7 +79,7 @@ const Laptops = () => {
               </div>
             ))}
           </div>
-          {filteredData?.length > 10 && (
+          {filteredData && filteredData.length > 10 && (
             <button className={scss.More} onClick={handleShowMore}>
               {showAll ? "СВЕРНУТЬ" : "ЕЩЕ"}
             </button>
