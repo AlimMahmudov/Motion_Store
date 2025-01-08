@@ -93,7 +93,7 @@ const Basket = () => {
           </div>
         ) : (
           <>
-            <div className={scss.desc}>
+            <div data-aos="fade-up" className={scss.desc}>
               <p>Картинка</p>
               <p className={scss.model}>Модель</p>
               <p>Цена</p>
@@ -102,7 +102,7 @@ const Basket = () => {
             </div>
             <div className={scss.content}>
               {basket.map((el) => (
-                <div key={el.id} className={scss.product}>
+                <div data-aos="fade-up" key={el.id} className={scss.product}>
                   <div className={scss.box_img}>
                     {el.photos?.map(
                       (item, index) =>
@@ -117,7 +117,7 @@ const Basket = () => {
                         )
                     )}
                   </div>
-                  <div data-aos="fade-up" className={scss.details}>
+                  <div className={scss.details}>
                     <h2 className={scss.model}>{el.model}</h2>
                     <h3 className={scss.price}>
                       {Number(el.price) * Number(el.quantity)} сом
@@ -147,7 +147,11 @@ const Basket = () => {
                   </div>
                 </div>
               ))}
-              <form onSubmit={handleSubmit(onSubmit)} className={scss.form}>
+              <form
+                data-aos="fade-up"
+                onSubmit={handleSubmit(onSubmit)}
+                className={scss.form}
+              >
                 <input
                   placeholder="Телефон"
                   type="tel"

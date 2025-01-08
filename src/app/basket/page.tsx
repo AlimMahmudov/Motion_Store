@@ -1,4 +1,4 @@
-import Basket from "@/appPages/components/pages/basketPage/Basket";
-const page = () => <Basket/>
+import BasketPage from "@/appPages/components/pages/basket/BasketPage";
+const page = () => <BasketPage />;
 
 export default page;
