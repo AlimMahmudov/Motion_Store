@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+ 
 import scss from "./Laptops.module.scss";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
 import Image from "next/image";
@@ -8,9 +8,13 @@ import { useFilterStore } from "@/appPages/stores/sortStore";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-
+import Link from "next/link";
+import useBasketStore from "@/appPages/stores/useBasketStore";
+ 
 const Laptops = () => {
-  const router = useRouter();
+
+  
+  
   const { data } = useGetLaptopsQuery();
   const [visibleCount, setVisibleCount] = useState(10);
   const [showAll, setShowAll] = useState(false);
@@ -20,6 +24,7 @@ const Laptops = () => {
   }, []);
 
   const { selectedType, selectedCategory } = useFilterStore();
+  const { addToBasket } = useBasketStore();
 
   const filteredData = data?.filter((el) => {
     const matchesType = selectedType ? el.brand === selectedType : true;
@@ -38,6 +43,9 @@ const Laptops = () => {
       setShowAll(false);
     }
   };
+
+ 
+
 
   return (
     <div id={scss.Laptops}>
@@ -71,9 +79,12 @@ const Laptops = () => {
                     <h2>{el.price} сом</h2>
                   </div>
                   <div className={scss.buttons}>
-                    <button onClick={() => router.push(`/details/${el.id}`)}>
+                  <Link href={`/details/${el.id}`}> 
+                    <button >
                       Подробнее
                     </button>
+                    </Link>
+                    <button onClick={() => addToBasket(el)}>В корзину</button>
                   </div>
                 </div>
               </div>

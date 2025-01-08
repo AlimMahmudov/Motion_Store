@@ -55,7 +55,7 @@ const Details = () => {
             <div className={scss.price}>
               <h2>{findProduct?.price} сом</h2>
               <div className={scss.buttons}>
-                <button onClick={handleAddToBasket}>Купить</button>
+                <button onClick={handleAddToBasket}>В корзину</button>
               </div>
             </div>
           </div>

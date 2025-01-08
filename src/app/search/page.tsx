@@ -3,7 +3,7 @@ import React from 'react';
 
 const SearchPage = () => {
   return (
-    <div>
+    <div style={{marginTop:"50px"}}>
       <LaptopSearch/>
     </div>
   );

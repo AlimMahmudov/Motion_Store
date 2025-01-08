@@ -1,16 +1,17 @@
 "use client";
-import { useRouter } from "next/navigation";
 import scss from "./LaptopSearch.module.scss";
 import { useSearchStore } from "@/appPages/stores/searchStore";
 import { AiOutlineLeft } from "react-icons/ai";
 import Link from "next/link";
 import Image from "next/image";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
+import useBasketStore from "@/appPages/stores/useBasketStore";
 
 const LaptopSearch = () => {
-  const router = useRouter();
   const { searchQuery } = useSearchStore();
   const { data, isLoading } = useGetLaptopsQuery();
+
+  const { addToBasket } = useBasketStore();
 
   if (isLoading) {
     return <p>Загрузка...</p>;
@@ -20,6 +21,9 @@ const LaptopSearch = () => {
   const filteredData = (data || []).filter((el) =>
     el.model.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
   );
+
+ 
+
 
   return (
     <div id={scss.Laptops}>
@@ -55,9 +59,12 @@ const LaptopSearch = () => {
                       <h2>{el.price} сом</h2>
                     </div>
                     <div className={scss.buttons}>
-                      <button onClick={() => router.push(`/details/${el.id}`)}>
+                    <Link href={`/details/${el.id}`}> 
+                      <button  >
                         Подробнее
                       </button>
+                      </Link>
+                      <button onClick={() => addToBasket(el)}>В корзину</button>
                     </div>
                   </div>
                 </div>
