@@ -71,7 +71,7 @@
               background: #2c267d;
               color: #fff;
               border: none;
-              
+
               &:hover {
                 background: #0b00aa;
                 transition: all 0.3s;
@@ -134,47 +134,44 @@
   align-items: start;
 }
 
-
 .skeleton {
   .box_img {
-      width: 100%;
-      height: 230px;
-      background: #e0e0e0;
-      border-radius: 8px;
-      margin-bottom: 10px;
+    width: 100%;
+    height: 230px;
+    background: #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 10px;
   }
 
   .box_text {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
-      .skeleton_title {
-          height: 20px;
-          background: #e0e0e0;
-          border-radius: 4px;
-          width: 70%;
-      }
+    .skeleton_title {
+      height: 20px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      width: 70%;
+    }
 
-      .skeleton_price {
-          height: 20px;
-          background: #e0e0e0;
-          border-radius: 4px;
-          width: 50%;
-      }
+    .skeleton_price {
+      height: 20px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      width: 50%;
+    }
 
-      .skeleton_buttons {
-          height: 35px;
-          background: #e0e0e0;
-          border-radius: 4px;
-          width: 100%;
-      }
+    .skeleton_buttons {
+      height: 35px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      width: 100%;
+    }
   }
 }
 
- 
-
-@media (max-width: 768px){
+@media (max-width: 768px) {
   #Laptops {
     padding: 50px 0;
     .laptops {
@@ -182,7 +179,7 @@
       flex-direction: column;
       align-items: center;
       gap: 30px;
-  
+
       .block {
         display: flex;
         justify-content: start;
@@ -196,7 +193,7 @@
           flex-direction: row;
           align-items: center;
           justify-content: space-between;
-          width:100%;
+          width: 100%;
           height: 100%;
           box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
           border-radius: 8px;
@@ -233,9 +230,9 @@
               align-items: center;
               border: solid 2px #6d6d6d;
               border-radius: 10px;
-              padding:5px 5px;
+              padding: 5px 5px;
               margin-top: 6px;
-  
+
               h2 {
                 font-size: 18px;
                 color: green;
@@ -251,7 +248,7 @@
                 background: #2c267d;
                 color: #fff;
                 border: none;
-                
+
                 &:hover {
                   background: #0b00aa;
                   transition: all 0.3s;
@@ -265,7 +262,7 @@
               justify-content: space-between;
               margin-top: 10px;
               gap: 5px;
-  
+
               button {
                 display: flex;
                 align-items: center;
@@ -280,7 +277,7 @@
                 cursor: pointer;
                 transition: all 0.3s;
                 padding: 0 10px;
-  
+
                 &:hover {
                   background: #0b00aa;
                   transition: all 0.3s;
@@ -311,41 +308,40 @@
     }
   }
 
-
-.skeleton {
-  .box_img {
+  .skeleton {
+    .box_img {
       width: 100%;
       height: 130px;
       background: #e0e0e0;
       border-radius: 8px;
       margin-bottom: 10px;
-  }
+    }
 
-  .box_text {
+    .box_text {
       display: flex;
       flex-direction: column;
       gap: 10px;
 
       .skeleton_title {
-          height: 20px;
-          background: #e0e0e0;
-          border-radius: 4px;
-          width: 70%;
+        height: 20px;
+        background: #e0e0e0;
+        border-radius: 4px;
+        width: 70%;
       }
 
       .skeleton_price {
-          height: 20px;
-          background: #e0e0e0;
-          border-radius: 4px;
-          width: 50%;
+        height: 20px;
+        background: #e0e0e0;
+        border-radius: 4px;
+        width: 50%;
       }
 
       .skeleton_buttons {
-          height: 35px;
-          background: #e0e0e0;
-          border-radius: 4px;
-          width: 100%;
+        height: 35px;
+        background: #e0e0e0;
+        border-radius: 4px;
+        width: 100%;
       }
+    }
   }
-}
 }
