@@ -6,6 +6,11 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 // Тип для элемента корзины
 type BasketItem = {
   id: number;
@@ -16,6 +21,8 @@ type BasketItem = {
   photos?: { image: string }[];
   addedAt: string;
 };
+
+ 
 
 type IFormTelegram = {
   phone: string;
@@ -57,7 +64,8 @@ const Basket = () => {
           text: messageModel(data),
         }
       );
-      alert("Данные успешно отправлены!");
+      toast.success("Сообщение успешно отправлено.")
+      alert("Сообщение успешно отправлено.")
       clearBasket(); // Очищаем корзину
       reset(); // Сбрасываем форму
     } catch (error) {
@@ -68,6 +76,7 @@ const Basket = () => {
 
   return (
     <div id={scss.Basket}>
+      <ToastContainer />
       <div className="container">
         {basket.length === 0 ? (
           <div className={scss.emptyBasket}>
@@ -83,11 +92,11 @@ const Basket = () => {
         ) : (
           <>
             <div className={scss.desc}>
-              <p>картинка</p>
-              <p>название</p>
-              <p>цена</p>
-              <p>количество</p>
-              <p>удалить</p>
+              <p>Картинка</p>
+              <p className={scss.model}>Модель</p>
+              <p>Цена</p>
+              <p>Количество</p>
+              <p>Удалить</p>
             </div>
             <div className={scss.content}>
               {basket.map((el) => (
@@ -107,9 +116,9 @@ const Basket = () => {
                     )}
                   </div>
                   <div className={scss.details}>
-                    <h2 className={scss.model}>Модель: {el.model}</h2>
+                    <h2 className={scss.model}>{el.model}</h2>
                     <h3 className={scss.price}>
-                      Цена: {Number(el.price) * Number(el.quantity)} сом
+                       {Number(el.price) * Number(el.quantity)} сом
                     </h3>
                     <div className={scss.quantity}>
                       <button
@@ -149,7 +158,10 @@ const Basket = () => {
                   {...register("email")}
                   required
                 />
-                <button type="submit">Отправить заказ</button>
+                <button type="submit">
+                <ToastContainer />
+                  Отправить заказ
+                  </button>
               </form>
             </div>
           </>

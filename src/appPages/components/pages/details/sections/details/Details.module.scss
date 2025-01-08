@@ -204,7 +204,7 @@
 @media (max-width: 450px) {
   #Details {
     padding-top: 100px;
-    padding: 100px 50px;
+    padding: 100px 0px;
     .details {
       display: flex;
       justify-content: space-around;
@@ -220,6 +220,7 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+        width: 100%;
         h1 {
           font-size: 26px;
         }
@@ -229,7 +230,8 @@
         }
         .haracter {
           display: flex;
-          gap: 0px;
+          gap: 5px;
+          justify-content: space-between;
         }
         .price {
           display: flex;
