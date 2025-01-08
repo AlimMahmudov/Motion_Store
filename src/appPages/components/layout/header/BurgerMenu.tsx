@@ -7,11 +7,11 @@ import useBasketStore from "@/appPages/stores/useBasketStore";
 
 interface BurgerMenuProps {
 	isOpen: boolean;
+	setIsOpen: (value: boolean) => void;
 }
 
-const BurgerMenu: FC<BurgerMenuProps> = ({ isOpen }) => {
-
-  const { basket } = useBasketStore();
+const BurgerMenu: FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => {
+	const { basket } = useBasketStore();
 
 	return (
 		<div
@@ -19,14 +19,14 @@ const BurgerMenu: FC<BurgerMenuProps> = ({ isOpen }) => {
 				isOpen ? `${scss.burger_menu} ${scss.active}` : `${scss.burger_menu}`
 			}>
 			<div className={scss.content}>
-				<Link className={scss.basket} href={"/basket"}>
-        <GrCart />
-				{basket.length > 0 && (
-                      <span className={scss.cartCount}>{basket.length}</span>
-                    )}
+				<Link className={scss.basket} onClick={() => setIsOpen(false)}  href={"/basket"}>
+					<GrCart />
+					{basket.length > 0 && (
+						<span className={scss.cartCount}>{basket.length}</span>
+					)}
 				</Link>
 
-				<Link className={scss.tel} href={`tel:+996773400551`} target={"_blank"}>
+				<Link onClick={() => setIsOpen(false)}  className={scss.tel} href={`tel:+996773400551`} target={"_blank"}>
 					+996 773400551
 				</Link>
 			</div>

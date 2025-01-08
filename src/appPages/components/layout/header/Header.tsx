@@ -55,7 +55,7 @@ const Header = () => {
 								<button className={scss.bur} onClick={() => setIsOpen(!isOpen)}>
                 <GiHamburgerMenu />
 								</button>
-								<BurgerMenu isOpen={isOpen} />
+								<BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen}/>
 							</div>
 						</>
 					) : (

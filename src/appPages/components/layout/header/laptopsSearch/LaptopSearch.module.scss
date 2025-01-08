@@ -1,10 +1,34 @@
 #Laptops {
   padding: 50px;
+
+
+  .prev {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      width: 150px;
+      height: 35px;
+      border: none;
+      background: #2c267d;
+      color: #ffffff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 0 10px;
+      gap: 5px;
+
+      &:hover {
+        background: #0b00aa;
+        transition: all 0.3s;
+      }
+  }
   .laptops {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    margin-top: 40px;
 
     .block {
       display: flex;
