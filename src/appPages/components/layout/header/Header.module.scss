@@ -1,34 +1,34 @@
 #Header {
-	padding: 10px;
-	position: fixed;
-	z-index: 1000;
-	width: 100%;
-	background: #ffffffec;
-	.header {
-		.burger {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
+  padding: 10px;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  background: #ffffffec;
+  .header {
+    .burger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-			.logo {
-				display: flex;
-				align-items: center;
-				img {
-					width: 40px;
-					height: 40px;
-					border-radius: 50%;
-				}
-			}
+      .logo {
+        display: flex;
+        align-items: center;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
       input {
-				width: 100%;
-				height: 40px;
-				border-radius: 10px;
-				padding: 10px;
-				outline: none;
-				font-size: 18px;
-				border: none;
-				background: #d8d8d8;
-			}
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        padding: 10px;
+        outline: none;
+        font-size: 18px;
+        border: none;
+        background: #d8d8d8;
+      }
 
       button {
         border: none;
@@ -38,78 +38,86 @@
         font-size: 28px;
         border-radius: 10px;
       }
-		}
-		.content {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			.logo {
-				display: flex;
-				align-items: center;
-				img {
-					width: 50px;
-					height: 50px;
-					border-radius: 50%;
-				}
-				h1 {
-					font-size: 24px;
-					margin-left: 10px;
-					color: black;
-				}
-			}
-			input {
-				width: 100%;
-				height: 40px;
-				border-radius: 10px;
-				padding: 10px;
-				outline: none;
-				font-size: 18px;
-				border: none;
-				background: #d8d8d8;
-			}
-			.icons {
-				display: flex;
-				align-items: center;
-				gap: 5px;
-				button {
-					padding: 5px 5px;
-					border: none;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					font-size: 25px;
-					border-radius: 10px;
+    }
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .logo {
+        display: flex;
+        align-items: center;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+        h1 {
+          font-size: 24px;
+          margin-left: 10px;
+          color: black;
+        }
+      }
+      input {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        padding: 10px;
+        outline: none;
+        font-size: 18px;
+        border: none;
+        background: #d8d8d8;
+      }
+      .icons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        button {
+          padding: 5px 5px;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 25px;
+          border-radius: 10px;
           background: none;
 
-					position: relative;
+          position: relative;
 
- 
-					
-					.cartCount {
-						position: absolute;
-						top: -10px;
-						right: -10px;
-						background-color: red;
-						color: white;
-						border-radius: 50%;
-						padding: 4px 8px;
-						font-size: 12px;
-						font-weight: bold;
-					}
-					
-				}
-				p {
-					font-size: 20px;
-					font-weight: 500;
-					color: black;
-				}
-			}
-		}
-	}
+          .cartCount {
+            position: absolute;
+            top: -7px;
+            right: -7px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+          }
+        }
+        p {
+          font-size: 20px;
+          font-weight: 500;
+          color: black;
+          border: solid 3px #000;
+          border-radius: 15px;
+          padding: 5px;
+          transition: 0.3s;
+
+          &:hover {
+            background: #080077;
+            color: #fff;
+            border: solid 3px #080077;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
-	#Header {
-		padding: 10px 0;
-	}
+  #Header {
+    padding: 10px 0;
+  }
 }
