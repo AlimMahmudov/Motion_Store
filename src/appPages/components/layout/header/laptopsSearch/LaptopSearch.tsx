@@ -6,6 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
 import useBasketStore from "@/appPages/stores/useBasketStore";
+import { useEffect } from "react";
+import "aos/dist/aos.css";
+import Aos from "aos";
 
 const LaptopSearch = () => {
   const { searchQuery } = useSearchStore();
@@ -22,20 +25,28 @@ const LaptopSearch = () => {
     el.model.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
   );
 
- 
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
 
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   return (
     <div id={scss.Laptops}>
       <div className="container">
         <Link href={"/"}>
-          <button className={scss.prev}>
+          <button data-aos="fade-up" className={scss.prev}>
             <AiOutlineLeft />
             Вернуться
           </button>
         </Link>
         <div className={scss.laptops}>
-          <div className={scss.block}>
+          <div data-aos="fade-up" className={scss.block}>
             {filteredData.length > 0 ? (
               filteredData.map((el) => (
                 <div key={el.id} className={scss.box}>
@@ -59,10 +70,8 @@ const LaptopSearch = () => {
                       <h2>{el.price} сом</h2>
                     </div>
                     <div className={scss.buttons}>
-                    <Link href={`/details/${el.id}`}> 
-                      <button  >
-                        Подробнее
-                      </button>
+                      <Link href={`/details/${el.id}`}>
+                        <button>Подробнее</button>
                       </Link>
                       <button onClick={() => addToBasket(el)}>В корзину</button>
                     </div>
