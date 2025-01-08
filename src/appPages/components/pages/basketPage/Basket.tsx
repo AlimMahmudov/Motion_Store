@@ -6,10 +6,10 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
+import Aos from "aos";
 
 // Тип для элемента корзины
 type BasketItem = {
@@ -21,8 +21,6 @@ type BasketItem = {
   photos?: { image: string }[];
   addedAt: string;
 };
-
- 
 
 type IFormTelegram = {
   phone: string;
@@ -64,8 +62,8 @@ const Basket = () => {
           text: messageModel(data),
         }
       );
-      toast.success("Сообщение успешно отправлено.")
-      alert("Сообщение успешно отправлено.")
+      toast.success("Сообщение успешно отправлено.");
+      alert("Сообщение успешно отправлено.");
       clearBasket(); // Очищаем корзину
       reset(); // Сбрасываем форму
     } catch (error) {
@@ -73,6 +71,10 @@ const Basket = () => {
       alert("Произошла ошибка при отправке. Попробуйте позже.");
     }
   };
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   return (
     <div id={scss.Basket}>
@@ -115,10 +117,10 @@ const Basket = () => {
                         )
                     )}
                   </div>
-                  <div className={scss.details}>
+                  <div data-aos="fade-up" className={scss.details}>
                     <h2 className={scss.model}>{el.model}</h2>
                     <h3 className={scss.price}>
-                       {Number(el.price) * Number(el.quantity)} сом
+                      {Number(el.price) * Number(el.quantity)} сом
                     </h3>
                     <div className={scss.quantity}>
                       <button
@@ -159,9 +161,9 @@ const Basket = () => {
                   required
                 />
                 <button type="submit">
-                <ToastContainer />
+                  <ToastContainer />
                   Отправить заказ
-                  </button>
+                </button>
               </form>
             </div>
           </>

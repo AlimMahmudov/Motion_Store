@@ -4,6 +4,9 @@ import scss from "./Details.module.scss";
 import Image from "next/image";
 import { useGetLaptopsQuery } from "@/redux/api/laptops";
 import useBasketStore from "@/appPages/stores/useBasketStore";
+import { useEffect } from "react";
+import "aos/dist/aos.css";
+import Aos from "aos";
 
 const Details = () => {
   const { id } = useParams();
@@ -13,11 +16,15 @@ const Details = () => {
 
   const handleAddToBasket = () => {
     if (findProduct) {
-      addToBasket(findProduct); 
+      addToBasket(findProduct);
     } else {
       console.error("Товар не найден.");
     }
   };
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   return (
     <div id={scss.Details}>
@@ -29,9 +36,10 @@ const Details = () => {
             width={320}
             height={300}
             style={{ objectFit: "cover" }}
+            data-aos="fade-right"
           />
 
-          <div className={scss.text}>
+          <div data-aos="fade-left" className={scss.text}>
             <h1>{findProduct?.model}</h1>
             <p>{findProduct?.description}</p>
 
