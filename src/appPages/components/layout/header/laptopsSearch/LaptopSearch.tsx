@@ -13,18 +13,9 @@ import Aos from "aos";
 const LaptopSearch = () => {
   const { searchQuery } = useSearchStore();
   const { data, isLoading } = useGetLaptopsQuery();
-
   const { addToBasket } = useBasketStore();
 
-  if (isLoading) {
-    return <p>Загрузка...</p>;
-  }
-
-  // Проверяем, если data не определено, устанавливаем пустой массив
-  const filteredData = (data || []).filter((el) =>
-    el.model.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
-  );
-
+  // Инициализация AOS
   useEffect(() => {
     Aos.init({
       duration: 1000,
@@ -32,9 +23,14 @@ const LaptopSearch = () => {
     });
   }, []);
 
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
+  if (isLoading) {
+    return <p>Загрузка...</p>;
+  }
+
+  // Фильтрация данных
+  const filteredData = (data || []).filter((el) =>
+    el.model.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
+  );
 
   return (
     <div id={scss.Laptops}>
