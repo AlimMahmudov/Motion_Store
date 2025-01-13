@@ -27,6 +27,6 @@ export const api = createApi({
   baseQuery: baseQueryExtended,
   refetchOnReconnect: true,
   refetchOnFocus: true,
-  tagTypes: ["laptops","laptopphoto"],
+  tagTypes: ["laptops", "laptopphoto"],
   endpoints: () => ({}),
 });
