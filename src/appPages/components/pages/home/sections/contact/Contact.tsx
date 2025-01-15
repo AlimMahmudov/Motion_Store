@@ -39,7 +39,7 @@ const Contact = () => {
         <div className={scss.content}>
           <div className={scss.contact}>
             <form
-              data-aos="fade-right"
+              jdata-aos="fade-right"
               className={scss.form}
               onSubmit={handleSubmit(onSubmit)}
             >
@@ -65,7 +65,7 @@ const Contact = () => {
                 <button type="submit">Оставьте заявку</button>
               </div>
             </form>
-            <div data-aos="fade-left" className={scss.map}>
+            <div jdata-aos="fade-left" className={scss.map}>
               <div className={scss.map_text}>
                 <h1>Контакты</h1>
                 <h2>
@@ -73,7 +73,6 @@ const Contact = () => {
                   продукции и оформить заказ.
                 </h2>
                 <p>
-                  
                   <FaPhone /> +996 700 000 000
                 </p>
               </div>
